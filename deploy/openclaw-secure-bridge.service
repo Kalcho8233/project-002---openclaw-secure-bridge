@@ -1,0 +1,17 @@
+[Unit]
+Description=OpenClaw Secure Bridge
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/Coding_Projects/Test_Projects/openclaw-secure-bridge
+EnvironmentFile=/root/Coding_Projects/Test_Projects/openclaw-secure-bridge/.env
+ExecStart=/usr/bin/python3 -m uvicorn app.main:app --host 127.0.0.1 --port 18080
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
